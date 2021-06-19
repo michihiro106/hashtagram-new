@@ -21,10 +21,10 @@ document.getElementById("button").onclick = function () {  //クリックして�
             dataMedias[t]=[];　　//tをキーに配列を作成
             const url0 = graph_api + "user_id=" + businessID + "&q=" + t + "&access_token=" + accessToken;
              //タグID検索
-             fetch(url0)
+            fetch(url0)
                 .then((response) => {
                     return response.json() //ここでBodyからJSONを返す,定型処理
-                 })
+                })
                 .then((result) => {
                     dataId = result; //JSONをdataIdに代入
                     const url1 = 'https://graph.facebook.com/'
