@@ -3,7 +3,7 @@ document.getElementById("button").onclick = function () {  //クリックして�
     //初期値設定
     const limit = 50; //表示件数
     const graph_api = 'https://graph.facebook.com/ig_hashtag_search?';
-    const accessToken = 'EAAnGQ8kLkaUBAGFZBOS9ZBMPQWgZBvd5SdUppEXiHTW0GbrBP7xkSdU4bV4y7zVoDblKy8GMDBwSw1tZA9WMfaYZCwvIsnYZBwAi7s7PmbZCD9pCARGQhb8YlaQZAmnthpnzu4sMEEqZCtK2vV1zafoIWjcEgEOlJqZA1qMswJ85162aS9iVbSwCpF'; // アクセストークン
+    const accessToken = 'EAAnGQ8kLkaUBALtRdpQLZAPHNOj6A6DaZCT6PCtXgPEepfEraMdvQDLT0ufRVwaayJOXz2NFgUUPjzh6fxfXiST4mbeQ15m8hnVyjWk9SgUF6WIgY9jj6SSReSAgu9GZAiAefmM6ADZCACqsfZCkZCymwozKNS5vUY5rtZAxYwZCThCgkjIFI4Vl9VuJ0YBKZABoZD'; // アクセストークン
     const businessID = '17841441477914224'; //グラフAPIエクスプローラで取得したinstagram_business_accountのID
     let text = ''; //表示処理の際利用
     let hashtag = [];
@@ -60,8 +60,8 @@ document.getElementById("button").onclick = function () {  //クリックして�
                                             // let key = t;
 
                                             //dataMedias[t]中の任意の値を取り出す
-                                            console.log(JSON.stringify(Object.values(dataMedias[t])[10].id));
-
+                                            console.log(JSON.stringify(Object.values(dataMedias[t])[0].id));
+                                            console.log(dataMedias[t][0].permalink);
                                             //console.log(Object.values(dataMedias[t])[0]);　　
                                             //console.log(Object.values(dataMedias[t]));　
                                             //console.log(JSON.stringify(dataMedias[t]));　 
