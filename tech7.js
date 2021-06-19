@@ -3,19 +3,21 @@ document.getElementById("button").onclick = function () {  //クリックして�
     //初期値設定
     const limit = 50; //表示件数
     const graph_api = 'https://graph.facebook.com/ig_hashtag_search?';
-    const accessToken = 'EAAnGQ8kLkaUBALtRdpQLZAPHNOj6A6DaZCT6PCtXgPEepfEraMdvQDLT0ufRVwaayJOXz2NFgUUPjzh6fxfXiST4mbeQ15m8hnVyjWk9SgUF6WIgY9jj6SSReSAgu9GZAiAefmM6ADZCACqsfZCkZCymwozKNS5vUY5rtZAxYwZCThCgkjIFI4Vl9VuJ0YBKZABoZD'; // アクセストークン
+    const accessToken = 'EAAnGQ8kLkaUBAKcXVlJFSYGLPS1Tnx6ZBkLUPW9aGwPn5tHZCKStZB3eW0SliT3KgZAfQe1VKQ6ZBiJXC3jubtErsSdCul8LidamAdkHoKTYuFFjEb00pxqLdy8ZBQoUG3qgONl5QBY2DYy3xZB3mBP5tJYc8spoYxfZCtIX7MVAluZAEBJ8PiCfK8E2ETE72KZCQZD'; // アクセストークン
     const businessID = '17841441477914224'; //グラフAPIエクスプローラで取得したinstagram_business_accountのID
     let text = ''; //表示処理の際利用
     let hashtag = [];
     let input_message = [];
     let dataMedias = {};
     let dataId;
+    let filteredResult=[];
     input_message = document.getElementById("input_message").value; //テキストボックス内のキーワードを格納
     hashtag = input_message.split(/\s+/);
     console.log(hashtag);
     //console.log(hashtag.length);
+    //console.log(func1());  //func1の属性を見る
 
-    //メイン処理
+    //投稿検索、記録処理
     function func1(t) {
         return new Promise(function (resolve, reject) {
             dataMedias[t]=[];　　//tをキーに配列を作成
@@ -52,7 +54,9 @@ document.getElementById("button").onclick = function () {  //クリックして�
                                         dataMedias[t] = dataMedias[t].concat(result.data);   //afterデータの追加
 
                                         after = result.paging.cursors.after;  //次のafterの取得
-                                        if (dataMedias[t].length < 90) {
+                                        let i = 0;
+                                        if (i < 2) {
+                                            i++;
                                             myasync(after);
                                         }else{
                                             console.log(dataMedias);
@@ -60,19 +64,22 @@ document.getElementById("button").onclick = function () {  //クリックして�
                                             // let key = t;
 
                                             //dataMedias[t]中の任意の値を取り出す
-                                            console.log(JSON.stringify(Object.values(dataMedias[t])[0].id));
                                             console.log(dataMedias[t][0].permalink);
-                                            //console.log(Object.values(dataMedias[t])[0]);　　
-                                            //console.log(Object.values(dataMedias[t]));　
-                                            //console.log(JSON.stringify(dataMedias[t]));　 
+                                            resolve(true);
+                                            // console.log(JSON.stringify(Object.values(dataMedias[t])[0].id));
                                         }
-                                        return;
                                     })
                             }
                             myasync(after);
                         })
+                    // resolve();
                 })
         })
+    }
+
+    //一致処理
+    let func2 = ()=>{
+
     }
 
 
@@ -82,10 +89,15 @@ document.getElementById("button").onclick = function () {  //クリックして�
             return new Promise(resolve => {
                 return func1(tag)
                     .then(result => {
+                        //ひとつの処理が終わるごと
                         resolve(result);
                     });
             });
-        }));
+        }))　//全ての投稿取得終了
+        .then(()=>{ //一致処理へ
+            console.log("test2");
+            func2();
+        });
         
     }else{
         console.log("五つ以下のタグを入力してください");
