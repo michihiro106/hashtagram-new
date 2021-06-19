@@ -3,7 +3,8 @@ document.getElementById("button").onclick = function () {  //クリックして�
     //初期値設定
     const limit = 50; //表示件数
     const graph_api = 'https://graph.facebook.com/ig_hashtag_search?';
-    const accessToken = 'EAAnGQ8kLkaUBAGFZBOS9ZBMPQWgZBvd5SdUppEXiHTW0GbrBP7xkSdU4bV4y7zVoDblKy8GMDBwSw1tZA9WMfaYZCwvIsnYZBwAi7s7PmbZCD9pCARGQhb8YlaQZAmnthpnzu4sMEEqZCtK2vV1zafoIWjcEgEOlJqZA1qMswJ85162aS9iVbSwCpF'; // アクセストークン
+    const accessToken = 'EAAnGQ8kLkaUBAA7JpubbVa5jr3UbZAnFmIOLcZCS04o4YIGpmHIkaJvspoqEQAnBtCVu5PV9uIJYPISQ9GtM1VpO95v4dZCKsXvCJIZBiefHYakegiPeKzD2fw4ZAhDpn2IjeEZBi4PZBy4WWbbmL2E8qaIhgfTl5BxFVlwZCG7KgYzCZCSyfUhcK'; // アクセストークン
+                         
     const businessID = '17841441477914224'; //グラフAPIエクスプローラで取得したinstagram_business_accountのID
     let text = ''; //表示処理の際利用
     let hashtag = [];
